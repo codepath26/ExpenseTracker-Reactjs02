@@ -3,6 +3,7 @@ import "./Expenses.css";
 import ExpensesList from "./ExpensesList";
 import { useState } from "react";
 import ExpenseFilter from "./ExpenseFilter";
+import ExpensesChart from "./ExpensesChart";
 
 const Expenses = ({ expenses }) => {
   const [filteredYear, setFilteredYear] = useState("2020");
@@ -10,10 +11,11 @@ const Expenses = ({ expenses }) => {
   const filterChangeHandler = (selectedYear) => {
     setFilteredYear(selectedYear);
   };
-  
+  // console.log(expenses)
   const filteredExpenses = expenses.filter((expense) => {
     return expense.date.getFullYear().toString() === filteredYear;
   });
+  console.log("filterexpense",filteredExpenses)
  
 
   return (
@@ -24,6 +26,7 @@ const Expenses = ({ expenses }) => {
       />
       {filteredExpenses.length === 1 && <p>Only single Expense here. Please add more...
 </p>}
+    <ExpensesChart expenses  ={filteredExpenses}/>
      <ExpensesList items={filteredExpenses}/>
     </Cart>
   );
