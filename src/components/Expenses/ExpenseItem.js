@@ -3,14 +3,15 @@ import  './ExpenseItem.css'
 import ExpenseDate from './ExpenseDate';
 import ExpenseDetails from './ExpenseDetails';
 import Cart from '../UI/Card';
-const ExpenseItem =  ({index,title , date , amount ,LocationOfExpenditure , onDeleteExpense}) =>{
-
+const ExpenseItem =  ({title , date , amount ,LocationOfExpenditure }) =>{
   return(
+    <li>
    <Cart className="expense-item">
     <ExpenseDate date ={date}/>
     <ExpenseDetails amount={amount} title={title}/>
     {/* <ExpenseDetails amount={amount} title={title} LocationOfExpenditure={LocationOfExpenditure}/> */}
    </Cart>
+    </li>
   );
 
 }
