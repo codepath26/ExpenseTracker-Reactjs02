@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Expenses from "./components/Expenses/Expenses";
 import NewExpense from "./components/NewExpense/NewExpense";
+import './App.css'
 const dumyExpense = [
   {
     id: "e1",
@@ -61,10 +62,10 @@ function App() {
     newExpenses ? setExpense(newExpenses) : setExpense(dumyExpense);
   }, []);
   return (
-    <>
+    <div id="main_div">
       <NewExpense onAddExpense={addExpenseHandler} />
       <Expenses expenses={expenses} />
-    </>
+    </div>
   );
 }
 
