@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Expenses from './components/Expenses/Expenses'
 import NewExpense from './components/NewExpense/NewExpense';
 const dumyExpense = [
@@ -14,13 +14,23 @@ function App() {
   const  addExpenseHandler = (expense)=>{
     setExpense((prevExpenses)=>{
       return [expense , ...prevExpenses];
-    })
+    });
+
+    localStorage.setItem("expenses" , JSON.stringify(expenses));
   }
+  useEffect(()=>{
+   let newExpenses =  localStorage.getItem('expenses');
+   newExpenses = JSON.parse(newExpenses);
+   console.log("this is the getting expense", newExpenses);
+   newExpenses = newExpenses.map((expense)=>{
+     return {...expense , date : new Date(expense.date)};
+   })
+   newExpenses ? setExpense(newExpenses) : setExpense(dumyExpense);
+  },[]);
   return (
     <div>
-    
        <NewExpense onAddExpense={addExpenseHandler}/>
-       <Expenses expenses={expenses}/>  
+       <Expenses expenses={expenses}/>   
     </div>
   );
 }
