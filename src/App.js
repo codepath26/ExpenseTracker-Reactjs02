@@ -61,7 +61,7 @@ function App() {
     newExpenses ? setExpense(newExpenses) : setExpense(dumyExpense);
   }, []);
   return (
-    <div>
+    <div style={{width : "90%" , margin : "auto"}}>
       <NewExpense onAddExpense={addExpenseHandler} />
       <Expenses expenses={expenses} />
     </div>
